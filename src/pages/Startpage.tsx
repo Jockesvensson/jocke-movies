@@ -18,10 +18,10 @@ const Startpage = () => {
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
   }, []);
-
+  
   return (
     <>
-      <MoviesList movies={movies} />
+      <MoviesList movies={movies} loading={loading}/>
     </>
   );
 };

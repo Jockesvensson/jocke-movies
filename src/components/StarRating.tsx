@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import StarIcon from "@mui/icons-material/Star";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 
-const StarRating = ({ newRating, setNewRating, setShowBigStar, showBigStar }) => {
+const StarRating = ({ newRating, setNewRating, setShowBigStar, showBigStar, setNewRatingError, setNewUploadedError }) => {
   const starArr = Array(10).fill(1);
 
   const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -27,6 +27,8 @@ const StarRating = ({ newRating, setNewRating, setShowBigStar, showBigStar }) =>
     setShowBigStar(true);
     setStarToclick(index);
     setNewRating(index);
+    setNewRatingError(false);
+    setNewUploadedError(false);
   };
 
   return (

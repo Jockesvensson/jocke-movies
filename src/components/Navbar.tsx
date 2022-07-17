@@ -20,8 +20,8 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="w-full py-4 bg-black">
-        <div className="max-w-5xl mx-auto flex justify-between items-center">
+      <div className="w-full absolute top-0 h-18 z-20 bg-black">
+        <div className="max-w-6xl mx-auto flex justify-between items-center py-4">
           {user?.email ? (
             <>
               <div className="text-2xl text-white">

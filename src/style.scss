@@ -1,4 +1,8 @@
 .comma {
+    &:not(:first-child) {
+        margin-left: 0.25rem;
+    }
+
     &:not(:last-child) {
         &::after {
             display: inline-block;
@@ -23,4 +27,12 @@
 .noblur {
     filter: blur(0px);
     cursor: pointer;
+}
+
+.img-loaded {
+    filter: blur(0px);
+}
+
+.img-loading {
+    filter: blur(10px);
 }

@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import SearchFilter from "./SearchFilter";
 import SortFilter from "./SortFilter";
 
-const MoviesList = ({ movies }) => {
+const MoviesList = ({ movies, loading }) => {
   const [searchFilterMovie, setSearchFilterMovie] = useState<any[]>([]);
-  const [Searching, setSearching] = useState<any[]>([]);
+  const [searching, setSearching] = useState<any[]>([]);
   const navigate = useNavigate();
 
   const handleClick = (movie: Movie) => {
@@ -19,7 +19,7 @@ const MoviesList = ({ movies }) => {
   }, [movies]);
 
   return (
-    <div className="max-w-5xl mx-auto mt-12">
+    <div className="max-w-6xl mx-auto mt-24 mb-12">
       <div className="flex my-6">
         <SearchFilter
           movies={movies}
@@ -30,7 +30,7 @@ const MoviesList = ({ movies }) => {
           <SortFilter
             movies={movies}
             setSearchFilterMovie={setSearchFilterMovie}
-            Searching={Searching}
+            searching={searching}
           />
         </div>
       </div>

@@ -15,11 +15,25 @@ const MoviePage = () => {
   const [showAddMovie, setShowAddMovie] = useState<boolean>(false);
   const [user, loading] = useAuthState(auth);
   const [movies, setMovies] = useState<any[]>([]);
+  const [imgSrc, setImgSrc] = useState<string>(
+    "https://via.placeholder.com/1500"
+  );
+  const [image, setImage] = useState<any>("");
+  const customClass = imgSrc && image === imgSrc ? "img-loaded" : "img-loading";
 
   useEffect(() => {
     if (loading) return;
     getUserMovies(user, setMovies);
-  }, [user, loading]);
+    setImage(movie.image_url);
+  }, [user, loading, movie.image_url]);
+
+  useEffect(() => {
+    const img: any = new Image();
+    img.src = image;
+    img.onload = () => {
+      setImgSrc(image);
+    };
+  }, [image]);
 
   const addMovie = () => {
     setShowAddMovie(true);
@@ -32,9 +46,8 @@ const MoviePage = () => {
 
   return (
     <>
-      <div></div>
-      <div className="relative max-w-5xl mx-auto p-4 mt-12">
-        <div className="mb-4">
+      <div className="relative max-w-6xl h-screen mx-auto pt-20 px-4 bg-gray-200">
+        <div className="my-4">
           <ArrowBackIcon
             sx={{ fontSize: 50, cursor: "pointer" }}
             onClick={() => navigate("/")}
@@ -42,13 +55,13 @@ const MoviePage = () => {
         </div>
         <div className="">
           <div className="grid grid-cols-2 gap-4">
-            <img src={movie.image_url} alt={movie.name} />
+            <img className={`h-img-height ${customClass}`} src={imgSrc} alt={movie.name} />
             <div className="relative flex flex-col">
               <div className="flex justify-between">
                 <div className="text-4xl font-semibold">{movie.name}</div>
                 <div className="flex">
                   <div className="flex flex-col items-center mr-4">
-                    <div>Imdb betyg</div>
+                    <div className="font-semibold">IMDb betyg</div>
                     <div className="flex">
                       <StarIcon sx={{ fontSize: 30, color: "gold" }} />
                       <div className="text-xl font-semibold">
@@ -56,35 +69,43 @@ const MoviePage = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-col items-center">
-                    <div>Ditt betyg</div>
-                    <div
-                      className={
-                        mapMovieList.length > 0 ? "flex" : "flex cursor-pointer"
-                      }
-                      onClick={() =>
-                        mapMovieList.length > 0 ? "" : addMovie()
-                      }
-                    >
-                      <StarOutlineIcon
-                        sx={{ fontSize: 30, color: "rgb(87, 153, 239)" }}
-                      />
-                      <div className="text-xl font-semibold">
-                        {mapMovieList.length > 0 ? (
-                          <div>{userRating}</div>
-                        ) : (
-                          <div>Betygsätt</div>
-                        )}
+                  {user?.email ? (
+                    <div className="flex flex-col items-center">
+                      <div className="font-semibold">Ditt betyg</div>
+                      <div
+                        className={
+                          mapMovieList.length > 0
+                            ? "flex"
+                            : "flex cursor-pointer"
+                        }
+                        onClick={() =>
+                          mapMovieList.length > 0 ? "" : addMovie()
+                        }
+                      >
+                        <StarOutlineIcon
+                          sx={{ fontSize: 30, color: "rgb(87, 153, 239)" }}
+                        />
+                        <div className="text-xl font-semibold">
+                          {mapMovieList.length > 0 ? (
+                            <div>{userRating}</div>
+                          ) : (
+                            <div>Betygsätt</div>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  ) : null}
                 </div>
               </div>
-              <div className="flex justify-between my-2 italic">
+              <div className="flex flex-col my-2">
+                <div className="font-semibold">År</div>
                 <div>{movie.year}</div>
-                <div className="flex items-center">
+              </div>
+              <div className="flex flex-col my-2">
+                <div className="font-semibold">Genre</div>
+                <div className="flex">
                   {movie.genre.map((genre, index) => (
-                    <span className="ml-1 comma" key={index}>
+                    <span className="comma" key={index}>
                       {genre}
                     </span>
                   ))}

@@ -5,6 +5,7 @@ import { deleteUserMovie } from "../services/Database";
 import EditMovie from "./EditMovie";
 import SearchFilter from "./SearchFilter";
 import SortFilter from "./SortFilter";
+import SortDateFilter from "./SortDateFilter";
 
 const SingelUserMovie = ({ movies }) => {
   const [display, setDisplay] = useState<string>("notdisplayed");
@@ -14,7 +15,7 @@ const SingelUserMovie = ({ movies }) => {
   const [movie, setMovie] = useState<any[]>([]);
   const [showEditMovie, setShowEditMovie] = useState<boolean>(false);
   const [searchFilterMovie, setSearchFilterMovie] = useState<any[]>([]);
-  const [Searching, setSearching] = useState<any[]>([]);
+  const [searching, setSearching] = useState<any[]>([]);
 
   useEffect(() => {
     setSearchFilterMovie(movies);
@@ -43,21 +44,32 @@ const SingelUserMovie = ({ movies }) => {
     deleteUserMovie(id);
   };
 
+  console.log(searchFilterMovie);
+
   return (
     <>
-      <div className="max-w-5xl mx-auto mt-8">
+      <div className="max-w-6xl mx-auto mt-8">
         <div className="flex my-6">
           <SearchFilter
             movies={movies}
             setSearchFilterMovie={setSearchFilterMovie}
             setSearching={setSearching}
           />
-          <div className="flex flex-col items-end w-1/4">
-            <SortFilter
-              movies={movies}
-              setSearchFilterMovie={setSearchFilterMovie}
-              Searching={Searching}
-            />
+          <div className="flex w-1/2 justify-end">
+            <div className="flex flex-col items-end mr-4">
+                <SortFilter
+                movies={movies}
+                setSearchFilterMovie={setSearchFilterMovie}
+                searching={searching}
+                />
+            </div>
+            <div className="flex flex-col items-end">
+                <SortDateFilter
+                movies={movies}
+                setSearchFilterMovie={setSearchFilterMovie}
+                searching={searching}
+                />
+            </div>
           </div>
         </div>
         <div className="grid grid-cols-6 gap-4">
@@ -98,10 +110,10 @@ const SingelUserMovie = ({ movies }) => {
                   Ta bort
                 </button>
               </div>
-              <div className="p-2 border-2 border-green-200 bg-green-200 flex flex-col">
+              <div className="relative flex flex-col h-36 p-2 border-2 border-green-200 bg-green-200">
                 <div>{movie.name}</div>
                 <div className="italic">{movie.uploaded}</div>
-                <div className="flex items-center justify-end">
+                <div className="absolute bottom-2 right-2 flex items-center justify-end">
                   <StarOutlineIcon sx={{ color: "rgb(87, 153, 239)" }} />
                   <div className="font-semibold">{movie.newRating}</div>
                 </div>

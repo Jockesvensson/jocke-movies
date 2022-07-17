@@ -8,6 +8,9 @@ module.exports = {
       colors: {
         'blueish': 'rgb(87, 153, 239)'
       },
+      height: {
+        'img-height': '686px'
+      }
     },
   },
   plugins: [],

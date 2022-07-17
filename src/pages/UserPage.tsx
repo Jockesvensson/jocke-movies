@@ -17,7 +17,7 @@ const UserPage = () => {
   }, [user, loading, navigate]);
 
   return (
-    <div className="">
+    <div className="mt-24 mb-12">
       <SingelUserMovie movies={movies} />
     </div>
   );

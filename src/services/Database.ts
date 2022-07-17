@@ -12,7 +12,7 @@ const fetchUserName = async (user, setName) => {
         const data = doc.docs[0].data();
         setName(data.name);
     } catch (err) {
-        console.log(err);
+        // console.log(err);
     }
 }
 
@@ -39,7 +39,7 @@ const getUserMovies = async (user, setMovies) => {
         });
         return unsubscribe;
     } catch (err) {
-        console.log(err);
+        // console.log(err);
     }
 }
 

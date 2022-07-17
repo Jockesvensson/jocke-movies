@@ -12,6 +12,8 @@ const EditMovie = (props) => {
   const [newRating, setNewRating] = useState<number>(0);
   const [uploaded, setUploaded] = useState(Date);
   const [showBigStar, setShowBigStar] = useState<boolean>(false);
+  const [newRatingError, setNewRatingError] = useState<boolean>(false);
+  const [newUploadedError, setNewUploadedError] = useState<boolean>(false);
 
   useEffect(() => {
     setNewRating(props.movie.newRating);
@@ -30,7 +32,7 @@ const EditMovie = (props) => {
       )}
       <div className="text-2xl mb-2">Uppdatera filmen och spara</div>
       <div className="flex justify-center">
-        <StarRating newRating={newRating} setNewRating={setNewRating} setShowBigStar={setShowBigStar} showBigStar={showBigStar}/>
+        <StarRating newRating={newRating} setNewRating={setNewRating} setShowBigStar={setShowBigStar} showBigStar={showBigStar} setNewRatingError={setNewRatingError} setNewUploadedError={setNewUploadedError}/>
       </div>
       <form className="flex flex-col">
         <input
