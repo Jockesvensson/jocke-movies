@@ -12,7 +12,6 @@ const registerWithEmailAndPassword = async (name, email, password) => {
             authProvider: "local",
             email,
         });
-        console.log(user);
     } catch (err) {
         console.error(err);
     }
@@ -21,7 +20,6 @@ const registerWithEmailAndPassword = async (name, email, password) => {
 const logInWithEmailAndPassword = async (email, password) => {
     try {
         await signInWithEmailAndPassword(auth, email, password);
-        console.log(auth);
     } catch (err) {
         console.error(err);
     }
