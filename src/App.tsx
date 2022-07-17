@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import "../src/style.scss";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Startpage from "./pages/Startpage";
+import MoviePage from "./pages/MoviePage";
+import Navbar from "./components/Navbar";
+import SignUp from "./components/SignUp";
+import SignIn from "./components/SignIn";
+import UserPage from "./pages/UserPage";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Startpage />} />
+        <Route path="signUp" element={<SignUp />} />
+        <Route path="signIn" element={<SignIn />} />
+        <Route path="/movie/:name" element={<MoviePage />} />
+        <Route path="/userPage" element={<UserPage />} />
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;

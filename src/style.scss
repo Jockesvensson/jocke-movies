@@ -1,0 +1,26 @@
+.comma {
+    &:not(:last-child) {
+        &::after {
+            display: inline-block;
+            content: ", ";
+        }
+    } 
+}
+
+.notdisplayed {
+    display: none;
+}
+
+.displayed {
+    display: flex;
+}
+
+.blur {
+    filter: blur(8px);
+    cursor: default;
+}
+
+.noblur {
+    filter: blur(0px);
+    cursor: pointer;
+}
