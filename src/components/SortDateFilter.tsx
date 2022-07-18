@@ -2,7 +2,6 @@ import React from "react";
 import { options } from "../services/SortCategoriesDate";
 
 const SortDateFilter = ({ movies, setSearchFilterMovie, searching }) => {
-  console.log(movies);
 
   const handleSortDate = (e) => {
     const sorted = [...movies];

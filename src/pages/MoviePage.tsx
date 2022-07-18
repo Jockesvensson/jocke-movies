@@ -46,22 +46,24 @@ const MoviePage = () => {
 
   return (
     <>
-      <div className="relative max-w-6xl h-screen mx-auto pt-20 px-4 bg-gray-200">
-        <div className="my-4">
+      <div className="relative max-w-6xl sm:h-screen mx-auto pt-20 px-4 bg-gray-200">
+        <div className="mb-4 mt-14 sm:mb-4 sm:mt-4">
           <ArrowBackIcon
             sx={{ fontSize: 50, cursor: "pointer" }}
             onClick={() => navigate("/")}
           />
         </div>
         <div className="">
-          <div className="grid grid-cols-2 gap-4">
-            <img className={`h-img-height ${customClass}`} src={imgSrc} alt={movie.name} />
-            <div className="relative flex flex-col">
-              <div className="flex justify-between">
-                <div className="text-4xl font-semibold">{movie.name}</div>
-                <div className="flex">
-                  <div className="flex flex-col items-center mr-4">
-                    <div className="font-semibold">IMDb betyg</div>
+          <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4">
+            <div>
+            <img className={`h-auto w-full object-contain self-center sm:h-img-height ${customClass}`} src={imgSrc} alt={movie.name} />
+            </div>
+            <div className="relative flex flex-col mb-8 sm:mb-0">
+              <div className="flex flex-col xsm:flex-row justify-between">
+                <div className="w-3/4 sm:w-full text-2xl md:text-3xl lg:text-4xl font-semibold">{movie.name}</div>
+                <div className="flex flex-row xsm:flex-col lg:flex-row mt-4 xsm:ml-4 xsm:mt-0 justify-between xsm:justify-center">
+                  <div className="flex flex-col items-center mr-4 mb-4 lg:mb-0">
+                    <div className="font-semibold text-center">IMDb betyg</div>
                     <div className="flex">
                       <StarIcon sx={{ fontSize: 30, color: "gold" }} />
                       <div className="text-xl font-semibold">
@@ -103,7 +105,7 @@ const MoviePage = () => {
               </div>
               <div className="flex flex-col my-2">
                 <div className="font-semibold">Genre</div>
-                <div className="flex">
+                <div className="flex flex-col xsm:flex-row">
                   {movie.genre.map((genre, index) => (
                     <span className="comma" key={index}>
                       {genre}
@@ -111,16 +113,16 @@ const MoviePage = () => {
                   ))}
                 </div>
               </div>
-              <div className="mt-2 text-2xl">Skådelspelare</div>
-              <div className="flex">
+              <div className="mt-2 text-2xl">Skådespelare</div>
+              <div className="flex flex-col xsm:flex-row">
                 {movie.actors.map((actor, index) => (
-                  <span className="mr-2 comma" key={index}>
+                  <span className="comma" key={index}>
                     {actor}
                   </span>
                 ))}
               </div>
               <div className="mt-4 text-2xl">Regissör</div>
-              <div className="flex">
+              <div className="flex flex-col xsm:flex-row">
                 {movie.directors.map((director, index) => (
                   <span className="mr-2 comma" key={index}>
                     {director}

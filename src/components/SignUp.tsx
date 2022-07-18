@@ -18,25 +18,25 @@ const SignUp = () => {
 
   return (
     <div className="w-full h-screen">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-12 bg-gray-300">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 xsm:p-12 bg-gray-300">
         <div className="text-2xl">Fyll i nedan uppgifter</div>
         <form className="flex flex-col" onSubmit={handleSignUpUser}>
           <input
-            className="w-72 p-3 my-2 bg-gray-700 rounded text-white"
+            className="w-64 xsm:w-72 p-3 my-2 bg-gray-700 rounded text-white"
             type="text"
             placeholder="Namn"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <input
-            className="w-72 p-3 my-2 bg-gray-700 rounded text-white"
+            className="w-64 xsm:w-72 p-3 my-2 bg-gray-700 rounded text-white"
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            className="w-72 p-3 my-2 bg-gray-700 rounded text-white"
+            className="w-64 xsm:w-72 p-3 my-2 bg-gray-700 rounded text-white"
             type="password"
             placeholder="Lösenord"
             value={password}
@@ -50,7 +50,7 @@ const SignUp = () => {
           Registrera
         </button>
         <div className="mt-4">
-          Har du redan ett kontot?{" "}
+          Har du redan ett konto?{" "}
           <Link className="underline" to="/signIn">
             Klicka här
           </Link>

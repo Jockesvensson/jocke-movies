@@ -28,7 +28,7 @@ const SearchFilter = ({ movies, setSearchFilterMovie, setSearching }) => {
   };
 
   return (
-    <div className="relative flex w-3/4">
+    <div className="relative flex w-full md:w-3/4">
       <input
         className="w-full px-4 py-2 border-2 border-gray-400"
         type="text"

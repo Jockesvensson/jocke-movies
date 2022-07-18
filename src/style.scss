@@ -1,6 +1,8 @@
 .comma {
     &:not(:first-child) {
-        margin-left: 0.25rem;
+        @media (min-width: 450px) {
+            margin-left: 0.25rem;
+        }
     }
 
     &:not(:last-child) {

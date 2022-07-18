@@ -29,21 +29,21 @@ const SingleMovie = (props: Movie) => {
             <img className={`w-full h-52 ${customClass}`} src={imgSrc} alt={name} />
             <div className="flex flex-col px-2 pt-4 pb-8 bg-green-200">
                 <div className="flex flex-1 justify-between">
-                    <div className="text-xl font-semibold">{name}</div>
+                    <div className="text-base md:text-xl font-semibold">{name}</div>
                     <div className="flex items-center ml-2">
                         <StarIcon sx={{color: 'gold'}}/>
                         <div className="ml-1 font-semibold">{rating}</div>
                     </div>
                 </div>
-                <div className="flex justify-between my-2 text-xs italic">
+                <div className="flex flex-col md:flex-row justify-between my-2 text-xs italic">
                     <div>{year}</div>
                     <div className="flex items-center">
                     {genre.map((genre, index) => (
-                        <span className="ml-1 comma" key={index}>{genre}</span>
+                        <span className="mt-1 md:mt-0 comma" key={index}>{genre}</span>
                     ))}
                     </div>
                 </div>
-                <div>{shortDesc}...</div>
+                <div className="text-sm md:text-base">{shortDesc}...</div>
             </div>
         </div>
     )

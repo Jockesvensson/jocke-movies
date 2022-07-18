@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+// import LineChart from "../components/LineChart";
 import SingelUserMovie from "../components/SingelUserMovie";
+import StatisticsInformation from "../components/StatisticsInformation";
 import { auth } from "../services/Auth";
 import { getUserMovies } from "../services/Database";
 
@@ -18,6 +20,7 @@ const UserPage = () => {
 
   return (
     <div className="mt-24 mb-12">
+      {/* <StatisticsInformation movies={movies}/> */}
       <SingelUserMovie movies={movies} />
     </div>
   );
