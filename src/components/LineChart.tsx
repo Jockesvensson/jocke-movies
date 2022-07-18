@@ -77,7 +77,7 @@ const LineChart = ({ movies }) => {
   }, [movies]);
 
   return (
-    <div className="max-w-6xl mx-auto mt-8 px-4">
+    <div className="max-w-6xl mx-auto mt-2 xsm:mt-4 px-4">
       <Doughnut
         data={chartData}
         width={"40%"}

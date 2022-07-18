@@ -10,10 +10,12 @@ const StatisticsInformation = ({ movies }) => {
 
   const openModal = () => {
     setShowStatisticModal(true);
+    document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     setShowStatisticModal(false);
+    document.body.style.overflow = 'unset';
   };
 
   const ratingArray = movies.map((obj, index) => obj.newRating);
