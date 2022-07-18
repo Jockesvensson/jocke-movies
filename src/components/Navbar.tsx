@@ -3,8 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, logout } from "../services/Auth";
 import { fetchUserName } from "../services/Database";
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
