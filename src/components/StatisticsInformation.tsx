@@ -59,7 +59,7 @@ const StatisticsInformation = ({ movies }) => {
         Visa statistik
       </button>
       {showStatisticModal && (
-        <div className="z-30 absolute top-20 right-6 left-6 xsm:top-30 xsm:right-12 xsm:left-12 sm:top-40 sm:right-20 sm:left-20 bg-gray-100 px-4 pt-4 pb-12">
+        <div className="z-30 absolute -top-36 right-0 left-0 bottom-0 xsm:top-30 xsm:right-12 xsm:left-12 xsm:bottom-auto sm:top-40 sm:right-20 sm:left-20 bg-gray-100 px-4 pt-4 pb-12">
           <div className="flex justify-end">
             <CloseIcon
               sx={{ fontSize: 30, cursor: "pointer" }}
