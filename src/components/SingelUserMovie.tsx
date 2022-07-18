@@ -109,7 +109,7 @@ const SingelUserMovie = ({ movies }) => {
                   Ta bort
                 </button>
               </div>
-              <div className="relative flex flex-col h-36 p-2 border-2 border-green-200 bg-green-200">
+              <div className="relative flex flex-col h-28 xsm:h-36 p-2 border-2 border-green-200 bg-green-200">
                 <div>{movie.name}</div>
                 <div className="italic">{movie.uploaded}</div>
                 <div className="absolute bottom-2 right-2 flex items-center justify-end">
