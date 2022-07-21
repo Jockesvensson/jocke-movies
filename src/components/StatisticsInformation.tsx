@@ -2,58 +2,36 @@ import React, { useEffect, useState } from "react";
 import LineChart from "./LineChart";
 import CloseIcon from "@mui/icons-material/Close";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
+import { ratingArrayFunction } from "../helpers/helper";
 
 const StatisticsInformation = ({ movies }) => {
   const [showStatisticModal, setShowStatisticModal] = useState<boolean>(false);
   const [highestValue, setHighestValue] = useState<number>(0);
   const [highestRating, setHighestRating] = useState<string>("");
+  const [sorted, setSorted] = useState<any[]>([]);
+  const [completedRatingArray, setCompletedRatingArray] = useState<any[]>([]);
+  const [averageRating, setAverageRating] = useState<number>(0);
 
   const openModal = () => {
     setShowStatisticModal(true);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setShowStatisticModal(false);
-    document.body.style.overflow = 'unset';
+    document.body.style.overflow = "unset";
   };
-
-  const ratingArray = movies.map((obj, index) => obj.newRating);
-
-  const ratingFiltered = ratingArray.filter(
-    (type, index) => ratingArray.indexOf(type) === index
-  );
-
-  const sorted = ratingFiltered.sort((a, b) => a - b);
-
-  const counts: any[] = [];
-  ratingArray.forEach((x) => {
-    counts[x] = (counts[x] || 0) + 1;
-  });
-
-  const completedRatingArray = counts.slice(1, 11);
 
   useEffect(() => {
-    getHighestRatingAndValue();
-  }, [showStatisticModal]);
-
-  const getHighestRatingAndValue = () => {
-    let highestValue = 0;
-    let highestRating = "";
-    for (const [key, value] of Object.entries(counts)) {
-      if (value > highestValue) {
-        highestValue = value;
-        highestRating = key;
-        setHighestValue(highestValue);
-        setHighestRating(highestRating);
-      }
-    }
-    return `${highestRating} : ${highestValue}`;
-  };
-
-  const averageRating =
-    ratingArray.reduce((sum, curr) => sum + Number(curr), 0) /
-    ratingArray.length;
+    ratingArrayFunction(
+      movies,
+      setSorted,
+      setCompletedRatingArray,
+      setHighestValue,
+      setHighestRating,
+      setAverageRating
+    );
+  }, [movies]);
 
   return (
     <div className="mb-8">

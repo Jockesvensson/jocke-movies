@@ -2,15 +2,18 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswor
 import { deleteDoc, doc, onSnapshot, updateDoc, collection, addDoc, where, query, getDocs, Timestamp, getDoc } from "firebase/firestore";
 import { auth, db } from '../firebase.config'
 
-const registerWithEmailAndPassword = async (name, email, password) => {
+const usersRef = collection(db, "users");
+
+const registerWithEmailAndPassword = async (name, email, password, favoriteMovie) => {
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password);
         const user = res.user;
-        await addDoc(collection(db, "users"), {
+        await addDoc(usersRef, {
             uid: user.uid,
             name,
             authProvider: "local",
             email,
+            favoriteMovie,
         });
     } catch (err) {
         console.error(err);
@@ -37,6 +40,12 @@ const logout = () => {
     signOut(auth);
 };
 
+const updateUser = async (newId, userName, favoriteMovie) => {
+    await updateDoc(doc(usersRef, newId), {
+        name: userName,
+        favoriteMovie: favoriteMovie
+    })
+}
 
 export {
     auth,
@@ -45,4 +54,5 @@ export {
     logInWithEmailAndPassword,
     sendPasswordReset,
     logout,
+    updateUser,
 }

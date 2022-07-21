@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, logout } from "../services/Auth";
-import { fetchUserName } from "../services/Database";
+import { fetchUser } from "../services/Database";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
-  const [name, setName] = useState<string>('');
   const navigate = useNavigate();
+  const [userInfo, setUserInfo] = useState<any>([]);
 
   const handleLogOut = () => {
     logout();
@@ -15,13 +15,17 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    fetchUserName(user, setName);
-  },[user])
+    fetchUser(user, setUserInfo);
+  }, [user]);
+
+  const name = userInfo.flatMap(({ name }) => name);
 
   return (
     <>
       <div id="navbar" className="w-full absolute top-0 h-18 z-20 bg-black">
-        <div className={`max-w-6xl mx-auto flex flex-col sm:flex-row justify-between sm:items-center py-4 px-4`}>
+        <div
+          className={`max-w-6xl mx-auto flex flex-col sm:flex-row justify-between sm:items-center py-4 px-4`}
+        >
           {user?.email ? (
             <>
               <div className="mb-4 sm:mb-0 text-2xl text-white">
@@ -30,9 +34,21 @@ const Navbar = () => {
               <div className="flex">
                 <button
                   className="px-4 py-2 mr-2 bg-green-200"
-                  onClick={() => navigate('/userPage')}
+                  onClick={() => navigate("/myMovies")}
                 >
-                  Mitt konto
+                  Mina filmer
+                </button>
+                <button
+                  className="px-4 py-2 mr-2 bg-green-200"
+                  onClick={() => navigate("/myProfile")}
+                >
+                  Profil
+                </button>
+                <button
+                  className="px-4 py-2 mr-2 bg-green-200"
+                  onClick={() => navigate("/friendPage")}
+                >
+                  Vänner
                 </button>
                 <button
                   className="px-4 py-2 bg-green-200"
@@ -40,7 +56,7 @@ const Navbar = () => {
                 >
                   Logga ut
                 </button>
-                </div>
+              </div>
             </>
           ) : (
             <>

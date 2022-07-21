@@ -8,6 +8,8 @@ import Navbar from "./components/Navbar";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import UserPage from "./pages/UserPage";
+import FriendPage from "./pages/FriendPage";
+import ProfilePage from "./pages/ProfilePage";
 
 const App = () => {
   return (
@@ -18,7 +20,9 @@ const App = () => {
         <Route path="signUp" element={<SignUp />} />
         <Route path="signIn" element={<SignIn />} />
         <Route path="/movie/:name" element={<MoviePage />} />
-        <Route path="/userPage" element={<UserPage />} />
+        <Route path="/myMovies" element={<UserPage />} />
+        <Route path="/myProfile" element={<ProfilePage />} />
+        <Route path="/friendPage" element={<FriendPage />} />
       </Routes>
     </>
   );

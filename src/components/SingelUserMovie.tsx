@@ -5,7 +5,6 @@ import EditMovie from "./EditMovie";
 import SearchFilter from "./SearchFilter";
 import SortFilter from "./SortFilter";
 import SortDateFilter from "./SortDateFilter";
-import StatisticsInformation from "./StatisticsInformation";
 
 const SingelUserMovie = ({ movies }) => {
   const [display, setDisplay] = useState<string>("notdisplayed");
@@ -70,7 +69,6 @@ const SingelUserMovie = ({ movies }) => {
             </div>
           </div>
         </div>
-        <StatisticsInformation movies={movies}/>
         <div className="flex flex-col xsm:grid xsm:grid-cols-2 small:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {searchFilterMovie.map((movie, index) => (
             <div key={index}>

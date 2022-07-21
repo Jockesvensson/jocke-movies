@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../services/Auth";
 import { updateUserMovie } from "../services/Database";
-import StarIcon from "@mui/icons-material/Star";
-import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import StarRating from "./StarRating";
 import BigStar from "./BigStar";
 
@@ -27,12 +25,17 @@ const EditMovie = (props) => {
 
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-12 bg-gray-300">
-      {showBigStar && (
-        <BigStar newRating={newRating}/>
-      )}
+      {showBigStar && <BigStar newRating={newRating} />}
       <div className="text-2xl mb-2">Uppdatera filmen och spara</div>
       <div className="flex justify-center">
-        <StarRating newRating={newRating} setNewRating={setNewRating} setShowBigStar={setShowBigStar} showBigStar={showBigStar} setNewRatingError={setNewRatingError} setNewUploadedError={setNewUploadedError}/>
+        <StarRating
+          newRating={newRating}
+          setNewRating={setNewRating}
+          setShowBigStar={setShowBigStar}
+          showBigStar={showBigStar}
+          setNewRatingError={setNewRatingError}
+          setNewUploadedError={setNewUploadedError}
+        />
       </div>
       <form className="flex flex-col">
         <input
