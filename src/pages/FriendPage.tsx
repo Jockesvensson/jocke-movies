@@ -83,7 +83,6 @@ const FriendPage = () => {
           onClick={() => handleShowFriends()}
         >
           Mina vänner
-          <span className="ml-1">({acceptedFriends.length})</span>
         </button>
         <button
           className={
@@ -94,7 +93,6 @@ const FriendPage = () => {
           onClick={() => handleShowFindFriends()}
         >
           Hitta vänner
-          <span className="ml-1">({totalFindFriendsCount})</span>
         </button>
         <button
           className={
