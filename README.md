@@ -1,3 +1,6 @@
+Tanken med denna hemsida var att försöka skapa någon form av Imdb (eller facebook med filmer). Gjort i React med Firebase som databas.
+URL: https://jocke-movies.vercel.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
